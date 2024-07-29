@@ -3,7 +3,7 @@ const usuarios = [];
 
 let ultimoID = 1;
 
-const cadastro = () => {
+const modelo = () => {
     let usuario = {
         id:'',
         email:'',
@@ -69,14 +69,9 @@ const cadastro = () => {
             }
         }
         
-    }
-
-    usuario.id = ultimoID ;
-    ultimoID++;
-    usuarios.push(usuario)
-    console.log('Usuario cadastrado com sucesso');
-
+    } return usuario;
 };
+
 
 const listagem = () => {
     if(usuarios.length == 0){
@@ -95,9 +90,12 @@ const atualizar = () => {
         console.log('Digite o ID do usuario que deseja atualizar');
         listagem();
         let entrada = prompt();
-        usuarios.forEach(function (usuario) {
+        usuarios.forEach(function (usuario, index) {
             if(entrada == usuario.id) {
-                cadastro();
+                let aux = usuario.id
+                let usuario = cadastro();
+                usuario.id = aux;
+                usuarios.splice(index,1 , usuario)
             }
         })
     }
@@ -117,6 +115,14 @@ const excluir = () => {
             } 
         });
     }
+}
+
+const cadastro = () => {
+    let usuario = modelo()
+    usuario.id = ultimoID ;
+    ultimoID++;
+    usuarios.push(usuario)
+    console.log('Usuario cadastrado com sucesso');
 }
 
 module.exports = {

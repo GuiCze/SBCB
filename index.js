@@ -1,5 +1,5 @@
 const prompt = require('prompt-sync')();
-const crud = require('./crud')
+const crud = require('./usuario.js')
 
 while(true) {
     console.log('Digite:\n1.Cadastro\n2.Listagem\n3.Atualizar\n4.Excluir\n5.Sair\n');
